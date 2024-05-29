@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const calculateButton = document.getElementById('calculate-button');
+    const ansDiv = document.getElementById('ans');
 
     // Function to calculate and display the total price
     function calculateTotal() {
@@ -10,22 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
             total += parseFloat(price.textContent);
         });
 
-        // Remove existing total row if present
-        const existingTotalRow = document.getElementById('total-row');
-        if (existingTotalRow) {
-            existingTotalRow.remove();
-        }
-
-        // Create a new row for the total price
-        const totalRow = document.createElement('tr');
-        totalRow.id = 'total-row';
-        const totalCell = document.createElement('td');
-        totalCell.colSpan = 2; // Span across both columns
-        totalCell.textContent = `Total Price: $${total.toFixed(2)}`;
-        totalRow.appendChild(totalCell);
-
-        // Append the new row to the table
-        document.getElementById('grocery-table').appendChild(totalRow);
+        // Display the total price in the ans div
+        ansDiv.textContent = `Total Price: $${total.toFixed(2)}`;
     }
 
     // Add event listener to the calculate button
